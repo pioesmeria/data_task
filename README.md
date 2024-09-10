@@ -4,7 +4,7 @@ Final Data Engineering Task for OTA
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -70,6 +70,7 @@ Below are the technology I used for this project:
 * Python - In this project, I leveraged Python's pandas library to efficiently fetch and merge all the CSV files within the dataset. Pandas' powerful data manipulation capabilities made it straightforward to handle and integrate the data seamlessly.
 * Docker - Docker is a tool that allowed me to run Mage in a containerized environment. 
 * Github - Our ever-reliant repository
+* Visual Studio Code - Even though Mage.AI has a code editor, I still use VS Code since I'm already accustomed to it. 
 
 ## Data Pipeline Design
 
