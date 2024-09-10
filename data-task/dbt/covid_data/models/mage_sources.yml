@@ -1,0 +1,20 @@
+sources:
+- description: Dataframes Mage upstream blocks
+  loader: mage
+  name: mage_covid_data
+  schema: main
+  tables:
+  - description: Dataframe for block `us_load_data` of the `us_covid_data` mage pipeline.
+    identifier: mage_us_covid_data_us_load_data
+    meta:
+      block_uuid: us_load_data
+      pipeline_uuid: us_covid_data
+    name: us_covid_data_us_load_data
+  - description: Dataframe for block `global_load_data` of the `global_covid_data`
+      mage pipeline.
+    identifier: mage_global_covid_data_global_load_data
+    meta:
+      block_uuid: global_load_data
+      pipeline_uuid: global_covid_data
+    name: global_covid_data_global_load_data
+version: 2
