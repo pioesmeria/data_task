@@ -10,12 +10,12 @@ blocks:
   language: python
   name: us_load_data
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: us_load_data
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     dbt_profile_target: duckdb
@@ -39,8 +39,9 @@ blocks:
   type: dbt
   upstream_blocks:
   - us_load_data
+  - seed_models
   uuid: dbt/covid_data/models/data_transform
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks: []
@@ -56,6 +57,29 @@ blocks:
   upstream_blocks:
   - dbt/covid_data/models/data_transform
   uuid: export_to_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt:
+      command: seed
+    dbt_profile_target: duckdb
+    dbt_profiles_file_path: dbt/covid_data/profiles.yml
+    dbt_project_name: dbt/covid_data
+    file_source:
+      path: dbts/seed_models.yaml
+  downstream_blocks:
+  - dbt/covid_data/models/data_transform
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: yaml
+  name: seed_models
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: seed_models
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
