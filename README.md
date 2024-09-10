@@ -51,7 +51,7 @@ POSTGRES_USER=
 
 ### Running Mage.AI
 
-On your terminal, under the root project folder where docker-container is located, run the code below:
+On your terminal, under the root project folder where docker-container is located, execute the docker command below:
 
 ```
 docker compose up
