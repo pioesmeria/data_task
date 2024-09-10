@@ -25,7 +25,7 @@ blocks:
     file_source:
       path: dbt/covid_data/models/data_transform_global.sql
       project_path: dbt/covid_data
-    limit: '5000000'
+    limit: '100000'
   downstream_blocks:
   - export_to__postgres_global
   executor_config: null
@@ -34,7 +34,7 @@ blocks:
   language: sql
   name: dbt/covid_data/models/data_transform_global
   retry_config: null
-  status: updated
+  status: failed
   timeout: null
   type: dbt
   upstream_blocks:
@@ -50,7 +50,7 @@ blocks:
   language: python
   name: export_to_+postgres_global
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:

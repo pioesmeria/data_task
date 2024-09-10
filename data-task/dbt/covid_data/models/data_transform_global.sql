@@ -5,6 +5,7 @@
 }}
 
 SELECT
+    strftime(Last_Update, '%Y-%m-%d') AS date,
     COALESCE(FIPS, 'Not US country') AS fips,
     COALESCE(Admin2, 'Not a US county') AS us_county,
     Province_State AS province_state,

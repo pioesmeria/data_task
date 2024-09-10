@@ -17,4 +17,18 @@ sources:
       block_uuid: global_load_data
       pipeline_uuid: global_covid_data
     name: global_covid_data_global_load_data
+  - description: Dataframe for block `time_series_load_data` of the `time_series_covid_data`
+      mage pipeline.
+    identifier: mage_time_series_covid_data_time_series_load_data
+    meta:
+      block_uuid: time_series_load_data
+      pipeline_uuid: time_series_covid_data
+    name: time_series_covid_data_time_series_load_data
+  - description: Dataframe for block `us_time_series_load_data` of the `us_time_series_covid_data`
+      mage pipeline.
+    identifier: mage_us_time_series_covid_data_us_time_series_load_data
+    meta:
+      block_uuid: us_time_series_load_data
+      pipeline_uuid: us_time_series_covid_data
+    name: us_time_series_covid_data_us_time_series_load_data
 version: 2
