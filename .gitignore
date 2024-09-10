@@ -172,4 +172,4 @@ node_modules
 .env
 your-first-project
 /dataset
-/seeds
+data-task/dbt/seeds
