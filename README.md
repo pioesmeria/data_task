@@ -20,17 +20,17 @@ A step by step guide that will tell you how to get the development environment u
 Be sure to run this on Docker!
 
 ```
-$ git clone https://github.com/pioesmeria/data_task.git data-task
-$ cd data-task
-$ cp dev.env .env
-$ rm dev.env
+git clone https://github.com/pioesmeria/data_task.git data-task
+cd data-task
+cp dev.env .env
+rm dev.env
 ```
 
 ### Dataset
-Do the step below to fetch the required dataset for this project. Make sure that you've done the steps above and that your terminal is under 'your/path/data-task'
+Do the step below to fetch the required dataset for this project.
 
 ```
-$ git clone https://github.com/CSSEGISandData/COVID-19.git dataset
+git clone https://github.com/CSSEGISandData/COVID-19.git data-task/dataset
 ```
 
 You should have a folder named 'dataset' under 'data-task'
@@ -54,7 +54,7 @@ DS_PATH=
 To run Mage.AI, go back to the Docker Desktop and type in the following command in the terminal.
 
 ```
-$ docker compose up
+docker compose up
 ```
 
 Once the server is running, go to http://localhost:6789 to view Mage.AI tool.
