@@ -166,7 +166,10 @@ node_modules
 .npmrc
 
 # Scratch files
-scratch*
+*scratch*
 /mage_data*
 *secrets*.json
+.env
 your-first-project
+/dataset
+/seeds
