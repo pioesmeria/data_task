@@ -170,6 +170,5 @@ node_modules
 /mage_data*
 *secrets*.json
 .env
-your-first-project
-/dataset
-data-task/dbt/seeds
+your-first-project/
+readme-template/
