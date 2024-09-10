@@ -16,7 +16,7 @@ The things you need before installing the software.
 
 ### Installation
 
-A step by step guide that will tell you how to get the development environment up and running on windows.
+A step by step guide that will tell you how to get the development environment up and running on Windows.
 Open a terminal and run the commands below.
 
 ```
@@ -27,13 +27,15 @@ rm dev.env
 ```
 
 ### Dataset
+
+Our dataset will come from the COVID-19 Data Repository by Johns Hopkins University.
 Do the step below to fetch the required dataset for this project.
 
 ```
 git clone https://github.com/CSSEGISandData/COVID-19.git data-task/dataset
 ```
 
-You should have a folder named 'dataset' under 'data-task'
+You should have a folder named 'dataset' under 'data-task'.
 
 
 ### .env File
@@ -45,13 +47,11 @@ POSTGRES_DB=
 POSTGRES_PASSWORD=
 POSTGRES_SCHEMA=
 POSTGRES_USER=
-PROJECT_NAME=
-DS_PATH=
 ```
 
 ### Running Mage.AI
 
-To run Mage.AI, go back to the Docker Desktop and type in the following command in the terminal.
+On your terminal, under the root project folder where docker-container is located, run the code below:
 
 ```
 docker compose up
