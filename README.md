@@ -17,7 +17,7 @@ The things you need before installing the software.
 ### Installation
 
 A step by step guide that will tell you how to get the development environment up and running on windows.
-Be sure to run this on Docker!
+Open a terminal and run the commands below.
 
 ```
 git clone https://github.com/pioesmeria/data_task.git data-task
