@@ -43,10 +43,11 @@ You should have a folder named 'dataset' under 'data-task'.
 In the .env file, change the value of the following code to your specification:
 
 ```
-POSTGRES_DB=
-POSTGRES_PASSWORD=
-POSTGRES_SCHEMA=
-POSTGRES_USER=
+POSTGRES_DB
+POSTGRES_PASSWORD
+POSTGRES_SCHEMA
+POSTGRES_USER
+PG_HOST_PORT #Default value is 5432
 ```
 
 ### Running Mage.AI
