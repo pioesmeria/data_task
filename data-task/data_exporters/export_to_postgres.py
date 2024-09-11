@@ -17,7 +17,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     Docs: https://docs.mage.ai/design/data-loading#postgresql
     """
     schema_name = 'covid_data'  # Specify the name of the schema to export data to
-    table_name = 'us_data'  # Specify the name of the table to export data to
+    table_name = kwargs['table_name']  # Specify the name of the table to export data to
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'dev'
     with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:

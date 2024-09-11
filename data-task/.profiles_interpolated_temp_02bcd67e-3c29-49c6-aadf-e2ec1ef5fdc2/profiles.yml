@@ -1,0 +1,14 @@
+covid_data:
+  outputs:
+    dev:
+      database: postgres
+      host: host.docker.internal
+      password: naruto8426
+      port: 5432
+      schema: analytics
+      threads: 100
+      type: postgres
+      user: postgres
+    duckdb:
+      type: duckdb
+  target: dev

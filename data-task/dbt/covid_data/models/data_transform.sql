@@ -22,8 +22,11 @@ SELECT DISTINCT
   COALESCE(us_covid.FIPS, lookup_table.FIPS) AS fips,                       -- Uses 'FIPS' from either 'us_covid' or 'lookup_table', prioritizing 'us_covid'.
   COALESCE(us_covid.ISO3, lookup_table.ISO3) AS iso3,                          -- Uses 'ISO3' from either 'us_covid' or 'lookup_table', prioritizing 'us_covid'.
   
-  COALESCE(us_covid.Last_Update, strftime('%A, %-d %B %Y - %I:%M:%S %p', us_covid.Date)) AS last_update,         -- Uses 'Last_Update' from 'us_covid', defaulting to a formatted version of 'Date' if 'Last_Update' is null.
-  
+  COALESCE(
+      us_covid.Last_Update,                     -- Uses 'Last_Update' from 'global_covid', if present.
+      strptime(us_covid.Date, '%Y-%m-%d')  -- If 'Last_Update' is null, formats 'Date' as a timestamp.
+    ) AS last_update, 
+
   COALESCE(us_covid.Lat, 0.0) AS latitude,                    -- Uses 'Lat' from 'us_covid', defaulting to 0.0 if null.
   COALESCE(us_covid.Long_, 0.0) AS longitude,                 -- Uses 'Long_' from 'us_covid', defaulting to 0.0 if null.
   
@@ -43,9 +46,9 @@ SELECT DISTINCT
   COALESCE(us_covid.People_Tested, 0.0) AS num_of_people_tested,   -- Uses 'People_Tested' from 'us_covid', defaulting to 0.0 if null.
   COALESCE(us_covid.Mortality_Rate, 0.0) AS mortality_rate   -- Uses 'Mortality_Rate' from 'us_covid', defaulting to 0.0 if null.
 
-FROM {{ source('mage_covid_data', 'us_covid_data_us_load_data') }} AS us_covid
+FROM {{ source('mage_covid_data', 'us_covid_data_load_data') }} AS us_covid
 INNER JOIN {{ ref('UID_ISO_FIPS_LookUp_Table') }} AS lookup_table
   ON us_covid.UID = lookup_table.UID
 
--- Source: 'mage_covid_data' schema and 'us_covid_data_us_load_data' table/view.
+-- Source: 'mage_covid_data' schema and 'us_covid_data_load_data' table/view.
 -- Lookup table: 'UID_ISO_FIPS_LookUp_Table' referenced for additional information.

@@ -55,4 +55,5 @@ notification_config:
 project_uuid: 189d43ecf4e04281965fb20e8c23d297
 features:
   dbt_v2: true
+  display_local_timezone: true
 pipelines:

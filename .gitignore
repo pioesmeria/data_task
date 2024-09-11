@@ -174,3 +174,4 @@ your-first-project/
 readme-template/
 .file_versions/
 *.log*
+.tmp

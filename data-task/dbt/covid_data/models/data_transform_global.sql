@@ -9,10 +9,6 @@
 -- The resulting view contains distinct records with standardized and default values for handling nulls.
 
 SELECT DISTINCT
-    COALESCE(
-      strftime(global_covid.Date, '%Y-%m-%d'),   -- Formats 'Date' from 'global_covid' as 'YYYY-MM-DD'.
-      strftime(global_covid.Last_Update, '%Y-%m-%d')  -- If 'Date' is null, formats 'Last_Update' from 'global_covid' as 'YYYY-MM-DD'.
-    ) AS date,
     
     COALESCE(
       global_covid.FIPS,                           -- Uses 'FIPS' from 'global_covid', if present.
@@ -39,10 +35,7 @@ SELECT DISTINCT
       lookup_table.Country_Region                  -- If 'Country_Region' is null, uses 'Country_Region' from 'lookup_table'.
     ) AS country,
     
-    COALESCE(
-      global_covid.Last_Update,                     -- Uses 'Last_Update' from 'global_covid', if present.
-      strftime('%A, %-d %B %Y - %I:%M:%S %p', global_covid.Date)  -- If 'Last_Update' is null, formats 'Date' as a detailed string.
-    ) AS last_update, 
+    global_covid.Last_Update AS last_update,        -- Directly uses Last_Update from global_covid without transformation
     
     COALESCE(
       global_covid.Lat,                            -- Uses 'Lat' from 'global_covid', if present.
@@ -84,7 +77,7 @@ SELECT DISTINCT
       0.0                                        -- If 'Case_Fatality_Ratio' is null, defaults to 0.0.
     ) AS case_fatality_ratio
 
-FROM {{ source('mage_covid_data', 'global_covid_data_global_load_data') }} AS global_covid
+FROM {{ source('mage_covid_data', 'global_covid_data_load_data') }} AS global_covid
 LEFT JOIN {{ ref('UID_ISO_FIPS_LookUp_Table') }} AS lookup_table
   ON global_covid.Country_Region = lookup_table.Country_Region
 

@@ -2,20 +2,21 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration:
-    disable_output_preview: true
+    file_source:
+      path: data_loaders/load_data.py
   downstream_blocks:
   - dbt/covid_data/models/data_transform_time_series
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: time_series_load_data
-  retry_config: {}
+  name: load_data
+  retry_config: null
   status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: time_series_load_data
+  uuid: load_data
 - all_upstream_blocks_executed: true
   color: null
   configuration:
@@ -28,35 +29,37 @@ blocks:
       project_path: dbt/covid_data
     limit: '100000'
   downstream_blocks:
-  - export_to_postgres_time_series
+  - export_to_postgres
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
   name: dbt/covid_data/models/data_transform_time_series
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
-  - time_series_load_data
+  - load_data
   uuid: dbt/covid_data/models/data_transform_time_series
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: data_exporters/export_to_postgres.py
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: export_to_postgres_time_series
+  name: export_to_postgres
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - dbt/covid_data/models/data_transform_time_series
-  uuid: export_to_postgres_time_series
+  uuid: export_to_postgres
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -79,5 +82,9 @@ spark_config: {}
 tags: []
 type: python
 uuid: time_series_covid_data
+variables:
+  dataset_path: csse_covid_19_time_series/
+  extension_name: '*_global.csv'
+  table_name: time_series_global
 variables_dir: /home/src/mage_data/data-task
 widgets: []
